@@ -1,0 +1,81 @@
+<view class="calendar-container {{theme === 'dark' ? 'dark' : ''}}">
+  <!-- 日历卡片 -->
+  <view class="calendar-card glass">
+    <!-- 月份选择器 -->
+    <view class="month-selector">
+      <view class="month-btn" bindtap="onPrevMonth">
+        <text class="btn-icon">‹</text>
+      </view>
+      
+      <text class="month-title">{{formatMonth()}}</text>
+      
+      <view class="month-btn" bindtap="onNextMonth">
+        <text class="btn-icon">›</text>
+      </view>
+    </view>
+
+    <!-- 星期标题 -->
+    <view class="week-header">
+      <view wx:for="{{weekDays}}" wx:key="*this" class="week-day">
+        {{item}}
+      </view>
+    </view>
+
+    <!-- 日历网格 -->
+    <view class="calendar-grid">
+      <view 
+        wx:for="{{calendarDays}}" 
+        wx:key="index"
+        class="calendar-day {{item.isCurrentMonth ? 'current-month' : 'other-month'}} {{item.hasRecord ? 'has-record' : ''}}"
+        bindtap="onDayTap"
+        data-day="{{item.day}}"
+        data-date-str="{{item.dateStr}}"
+        data-has-record="{{item.hasRecord}}"
+      >
+        <view class="day-content">
+          <block wx:if="{{item.hasRecord && item.primaryRecord}}">
+            <!-- 有记录时显示海报或标题 -->
+            <image 
+              wx:if="{{item.primaryRecord.posterImage}}"
+              class="day-poster" 
+              src="{{item.primaryRecord.posterImage}}" 
+              mode="aspectFill"
+            />
+            <view wx:else class="day-title">
+              {{item.primaryRecord.title.slice(0, 4)}}
+            </view>
+            
+            <!-- 时间显示 -->
+            <view wx:if="{{item.primaryRecord.time}}" class="day-time">
+              {{item.primaryRecord.time}}
+            </view>
+            
+            <!-- 多个记录指示器 -->
+            <view wx:if="{{item.multipleRecords}}" class="multiple-indicator"></view>
+          </block>
+          <block wx:else>
+            <!-- 无记录时显示日期 -->
+            <text class="day-number">{{item.day}}</text>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 月度统计 -->
+  <view class="stats-card">
+    <view class="stats-section">
+      <view>
+        <text class="stats-label">总演出数</text>
+        <text class="stats-value">{{monthStats.totalShows}}</text>
+      </view>
+      
+      <view class="stats-divider"></view>
+      
+      <view class="stats-right">
+        <text class="stats-label">总消费</text>
+        <text class="stats-value">¥{{monthStats.totalSpent}}</text>
+      </view>
+    </view>
+  </view>
+</view>

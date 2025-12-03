@@ -1,0 +1,149 @@
+<view class="stats-container {{theme === 'dark' ? 'dark' : ''}}">
+  <!-- 标题区域 -->
+  <view class="header-section">
+    <text class="page-title">Analytics</text>
+    <text class="page-subtitle">DATA VISUALIZATION</text>
+  </view>
+
+  <!-- 时间范围选择 -->
+  <view class="time-range-selector">
+    <view class="range-tabs">
+      <view 
+        class="range-tab {{timeRange === 'day' ? 'active' : ''}}"
+        bindtap="onTimeRangeChange"
+        data-range="day"
+      >
+        DAY
+      </view>
+      <view 
+        class="range-tab {{timeRange === 'month' ? 'active' : ''}}"
+        bindtap="onTimeRangeChange"
+        data-range="month"
+      >
+        MONTH
+      </view>
+      <view 
+        class="range-tab {{timeRange === 'year' ? 'active' : ''}}"
+        bindtap="onTimeRangeChange"
+        data-range="year"
+      >
+        YEAR
+      </view>
+    </view>
+  </view>
+
+  <!-- 日期选择器 -->
+  <view class="date-selector">
+    <view class="date-btn" bindtap="onPrevDate">
+      <text class="date-arrow">‹</text>
+    </view>
+    
+    <text class="date-label">{{dateLabel}}</text>
+    
+    <view class="date-btn" bindtap="onNextDate">
+      <text class="date-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 核心统计 -->
+  <view class="stats-grid">
+    <!-- 演出数量 -->
+    <view class="stat-card glass">
+      <view class="stat-header">
+        <view class="stat-badge">
+          <text class="badge-text">COUNT</text>
+        </view>
+      </view>
+      
+      <view class="stat-content">
+        <text class="stat-number">{{stats.totalShows}}</text>
+        <text class="stat-unit">SHOWS</text>
+      </view>
+      
+      <view class="stat-icon">🏆</view>
+    </view>
+
+    <!-- 总消费 -->
+    <view class="stat-card expense-card">
+      <view class="stat-header">
+        <view class="stat-badge expense-badge">
+          <text class="badge-text">总消费</text>
+        </view>
+      </view>
+      
+      <view class="stat-content">
+        <text class="stat-number expense-number">¥{{stats.totalSpent}}</text>
+      </view>
+      
+      <view class="expense-bg"></view>
+    </view>
+  </view>
+
+  <!-- 场馆分布图表 -->
+  <view wx:if="{{pieData.length > 0}}" class="chart-card glass">
+    <view class="chart-header">
+      <text class="chart-title">📍 Venues</text>
+    </view>
+    
+    <!-- 饼图区域 -->
+    <view class="pie-chart-container">
+      <canvas 
+        class="pie-chart" 
+        canvas-id="pieChart"
+        disable-scroll="true"
+      ></canvas>
+    </view>
+    
+    <!-- 图例 -->
+    <view class="chart-legend">
+      <view wx:for="{{pieData}}" wx:key="name" class="legend-item">
+        <view class="legend-color" style="background-color: {{item.color}};"></view>
+        <text class="legend-text">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 历史记录列表 -->
+  <view class="history-section">
+    <view class="history-header">
+      <text class="history-title">History Log</text>
+    </view>
+    
+    <view class="history-list">
+      <view 
+        wx:for="{{stats.records}}" 
+        wx:key="id"
+        class="history-item {{theme === 'dark' ? 'dark' : ''}}"
+        bindtap="onRecordTap"
+        data-id="{{item.id}}"
+      >
+        <!-- 海报缩略图 -->
+        <view class="history-poster">
+          <image 
+            wx:if="{{item.posterImage}}"
+            class="poster-image" 
+            src="{{item.posterImage}}" 
+            mode="aspectFill"
+          />
+          <view wx:else class="poster-placeholder">
+            <text class="placeholder-text">IMG</text>
+          </view>
+        </view>
+        
+        <!-- 信息 -->
+        <view class="history-info">
+          <text class="history-title">{{item.title}}</text>
+          <text class="history-details">{{item.date}} • {{item.location}}</text>
+        </view>
+        
+        <!-- 价格 -->
+        <text class="history-price">¥{{item.price}}</text>
+      </view>
+      
+      <!-- 空状态 -->
+      <view wx:if="{{stats.records.length === 0}}" class="empty-history">
+        <text class="empty-text">暂无数据</text>
+      </view>
+    </view>
+  </view>
+</view>

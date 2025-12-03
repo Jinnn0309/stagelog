@@ -1,0 +1,281 @@
+/* 日历页面样式 */
+.calendar-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 32rpx;
+  transition: all 0.3s ease;
+}
+
+.calendar-container.dark {
+  background-color: #000000;
+}
+
+/* 日历卡片 */
+.calendar-card {
+  border-radius: 48rpx;
+  padding: 32rpx;
+  margin-bottom: 48rpx;
+  box-shadow: 0 8rpx 32rpx 0 rgba(0, 0, 0, 0.04);
+}
+
+/* 月份选择器 */
+.month-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48rpx;
+}
+
+.month-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.month-btn:active {
+  background: #f3f4f6;
+  transform: scale(0.95);
+}
+
+.calendar-container.dark .month-btn:active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-icon {
+  font-size: 32rpx;
+  font-weight: 300;
+}
+
+.month-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #111827;
+  font-family: monospace;
+}
+
+.calendar-container.dark .month-title {
+  color: #ffffff;
+}
+
+/* 星期标题 */
+.week-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+.week-day {
+  text-align: center;
+  font-size: 20rpx;
+  font-weight: 600;
+  color: #9ca3af;
+  padding: 16rpx 0;
+  text-transform: uppercase;
+  letter-spacing: 1rpx;
+}
+
+.calendar-container.dark .week-day {
+  color: #6b7280;
+}
+
+/* 日历网格 */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6rpx;
+}
+
+.calendar-day {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  border-radius: 12rpx;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day.current-month {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.calendar-day.current-month.has-record {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.calendar-container.dark .calendar-day.current-month {
+  background: #1f2937;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.calendar-container.dark .calendar-day.current-month.has-record {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.2);
+}
+
+.calendar-day.other-month {
+  background: transparent;
+}
+
+.calendar-day:active {
+  transform: scale(0.95);
+}
+
+/* 日历天内容 */
+.day-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.day-number {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #d1d5db;
+}
+
+.calendar-day.current-month .day-number {
+  color: #6b7280;
+}
+
+/* 有记录的天 */
+.day-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.day-title {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16rpx;
+  font-weight: 600;
+  color: #92400e;
+  text-align: center;
+  padding: 4rpx;
+  line-height: 1.2;
+}
+
+.calendar-container.dark .day-title {
+  color: #fca5a5;
+}
+
+/* 时间显示 */
+.day-time {
+  position: absolute;
+  bottom: 8rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12rpx;
+  font-weight: 600;
+  color: #92400e;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rpx 4rpx;
+  border-radius: 4rpx;
+  backdrop-filter: blur(10rpx);
+  line-height: 1;
+}
+
+.calendar-container.dark .day-time {
+  color: #fca5a5;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* 多个记录指示器 */
+.multiple-indicator {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  width: 16rpx;
+  height: 16rpx;
+  background: #ef4444;
+  border-radius: 50%;
+  border: 4rpx solid white;
+}
+
+.calendar-container.dark .multiple-indicator {
+  border-color: #000000;
+}
+
+/* 统计卡片 */
+.stats-card {
+  background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+  border-radius: 32rpx;
+  padding: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 2rpx 8rpx 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #d1d5db;
+}
+
+.calendar-container.dark .stats-card {
+  background: linear-gradient(to right, #1f2937, #111827);
+  border: 1px solid #374151;
+}
+
+.stats-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stats-label {
+  display: block;
+  font-size: 20rpx;
+  color: #6b7280;
+  margin-bottom: 8rpx;
+  text-transform: uppercase;
+  letter-spacing: 2rpx;
+}
+
+.calendar-container.dark .stats-label {
+  color: #9ca3af;
+}
+
+.stats-value {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.calendar-container.dark .stats-value {
+  color: #ffffff;
+}
+
+.stats-divider {
+  width: 2rpx;
+  height: 60rpx;
+  background: #d1d5db;
+}
+
+.calendar-container.dark .stats-divider {
+  background: #374151;
+}
+
+.stats-right {
+  text-align: right;
+}

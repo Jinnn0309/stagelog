@@ -1,0 +1,280 @@
+/* 设置页面样式 */
+.settings-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 32rpx;
+  padding-top: 96rpx;
+  transition: all 0.3s ease;
+}
+
+.settings-container.dark {
+  background-color: #000000;
+}
+
+/* 用户卡片 */
+.user-card {
+  padding: 48rpx;
+  border-radius: 48rpx;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 48rpx;
+}
+
+.settings-container.dark .user-card {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 装饰背景 */
+.user-card-bg {
+  position: absolute;
+  top: -80rpx;
+  right: -80rpx;
+  width: 256rpx;
+  height: 256rpx;
+  background: linear-gradient(135deg, #fed7aa 0%, #f97316 100%);
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(32rpx);
+}
+
+/* 用户信息 */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 40rpx;
+  margin-bottom: 64rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.user-avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #111827 0%, #374151 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16rpx 32rpx 0 rgba(0, 0, 0, 0.2);
+  border: 8rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.settings-container.dark .user-avatar {
+  background: linear-gradient(135deg, #ffffff 0%, #d1d5db 100%);
+}
+
+.avatar-text {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: white;
+}
+
+.settings-container.dark .avatar-text {
+  color: #000000;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.username {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+  letter-spacing: -1rpx;
+}
+
+.settings-container.dark .username {
+  color: #ffffff;
+}
+
+.user-type {
+  display: block;
+  font-size: 24rpx;
+  color: #6b7280;
+  font-family: monospace;
+  letter-spacing: 4rpx;
+  text-transform: uppercase;
+  margin-top: 8rpx;
+}
+
+.settings-container.dark .user-type {
+  color: #9ca3af;
+}
+
+/* 徽章区域 */
+.badges-section {
+  margin-bottom: 64rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.section-icon {
+  font-size: 28rpx;
+}
+
+.section-title {
+  font-size: 22rpx;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 2rpx;
+}
+
+.settings-container.dark .section-title {
+  color: #6b7280;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24rpx;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx 16rpx;
+  border-radius: 32rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+  min-height: 160rpx;
+}
+
+.badge-item.earned {
+  background: white;
+  box-shadow: 0 4rpx 16rpx 0 rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
+.settings-container.dark .badge-item.earned {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.badge-item.locked {
+  border-style: dashed;
+  border-color: #e5e7eb;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.settings-container.dark .badge-item.locked {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.badge-icon {
+  font-size: 40rpx;
+  margin-bottom: 16rpx;
+}
+
+.badge-name {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 8rpx;
+}
+
+.settings-container.dark .badge-name {
+  color: #ffffff;
+}
+
+.badge-desc {
+  font-size: 18rpx;
+  color: #9ca3af;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.settings-container.dark .badge-desc {
+  color: #6b7280;
+}
+
+/* 设置选项 */
+.settings-section {
+  position: relative;
+  z-index: 2;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx;
+  background: white;
+  border-radius: 32rpx;
+  margin-bottom: 24rpx;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.settings-container.dark .setting-item {
+  background: #1f2937;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.setting-item:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+.setting-label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #374151;
+}
+
+.settings-container.dark .setting-label {
+  color: #e5e7eb;
+}
+
+.setting-toggle {
+  width: 80rpx;
+  height: 80rpx;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.settings-container.dark .setting-toggle {
+  background: #374151;
+}
+
+.toggle-icon {
+  font-size: 32rpx;
+}
+
+/* 退出登录项 */
+.logout-item {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.settings-container.dark .logout-item {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.logout-item .setting-label {
+  color: #dc2626;
+}
+
+.logout-icon {
+  font-size: 28rpx;
+}

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "StageLog",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#f9fafb",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "show-list": "/components/show-list"
+  }
+}

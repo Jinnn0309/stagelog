@@ -1,0 +1,254 @@
+<view class="form-container {{theme === 'dark' ? 'dark' : ''}}">
+  <!-- 头部 -->
+  <view class="form-header">
+    <view class="header-btn" bindtap="onBack">
+      <text class="back-icon">✕</text>
+    </view>
+    
+    <view class="header-title">
+      <text class="title-text">{{mode === 'edit' ? '编辑记录' : '新建记录'}}</text>
+      <text class="subtitle-text">{{mode === 'edit' ? '更新演出' : '添加演出'}}</text>
+    </view>
+    
+    <view class="header-btn save-btn" bindtap="onSave">
+      <text class="save-text">保存</text>
+    </view>
+  </view>
+
+  <!-- 表单内容 -->
+  <scroll-view class="form-content" scroll-y="true">
+    <!-- 票务链接解析 -->
+    <view class="ticket-parser-section">
+      <text class="section-title">🔗 票务链接解析</text>
+      <view class="parser-input-row">
+        <input 
+          class="parser-input"
+          type="text"
+          placeholder="粘贴票务平台链接（大麦、猫眼等）"
+          value="{{ticketUrl}}"
+          bindinput="onTicketUrlInput"
+        />
+        <view class="parse-btn" bindtap="onParseTicket">
+          <text>解析</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 海报上传 -->
+    <view class="poster-upload">
+      <label class="upload-label">
+        <image 
+          wx:if="{{formData.posterImage}}"
+          class="poster-image" 
+          src="{{formData.posterImage}}" 
+          mode="aspectFill"
+          bindtap="onPreviewImage"
+          data-url="{{formData.posterImage}}"
+        />
+        <view wx:else class="poster-placeholder" bindtap="onUploadPoster">
+          <text class="placeholder-icon">📷</text>
+          <text class="placeholder-text">上传海报</text>
+        </view>
+      </label>
+      
+      <view wx:if="{{formData.posterImage}}" class="image-actions">
+        <view class="image-btn delete-btn" bindtap="onDeleteImage" data-field="posterImage">
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 基本信息 -->
+    <view class="form-section">
+      <view class="input-group">
+        <input 
+          class="form-input title-input {{theme === 'dark' ? 'dark' : ''}}"
+          type="text"
+          placeholder="请输入剧目名称"
+          value="{{formData.title}}"
+          bindinput="onInputChange"
+          bindfocus="onInputFocus"
+          bindblur="onInputBlur"
+          data-field="title"
+        />
+      </view>
+
+      <view class="form-row">
+          <view class="input-group half">
+            <text class="input-label">📅 日期</text>
+            <picker mode="date" start="2025-01-01" end="2030-12-31" bindchange="onDateChange">
+              <view class="selector-input">
+                <text class="selector-text {{formData.date ? '' : 'placeholder'}}">
+                  {{formData.date || '选择日期'}}
+                </text>
+                <text class="selector-arrow">▼</text>
+              </view>
+            </picker>
+          </view>
+          
+          <view class="input-group half">
+            <text class="input-label">🕐 时间</text>
+            <picker mode="time" bindchange="onTimeChange">
+              <view class="selector-input">
+                <text class="selector-text {{formData.time ? '' : 'placeholder'}}">
+                  {{formData.time || '选择时间'}}
+                </text>
+                <text class="selector-arrow">▼</text>
+              </view>
+            </picker>
+          </view>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">📍 剧院</text>
+        <view class="selector-input" bindtap="onToggleLocationPicker">
+            <text class="selector-text {{formData.location ? '' : 'placeholder'}}">
+              {{formData.location || '选择剧院'}}
+            </text>
+            <text class="selector-arrow">▼</text>
+          </view>
+      </view>
+
+      <!-- 剧院选择器 -->
+      <view wx:if="{{showLocationPicker}}" class="location-picker-modal">
+        <view class="picker-overlay" bindtap="onToggleLocationPicker"></view>
+        <view class="picker-content">
+          <view class="picker-header">
+            <text class="picker-title">选择剧院</text>
+            <view class="picker-close" bindtap="onToggleLocationPicker">
+              <text>✕</text>
+            </view>
+          </view>
+          
+          <!-- 城市-剧院两级选择 -->
+          <view class="two-level-picker">
+            <!-- 左侧城市列表 -->
+            <scroll-view class="city-list" scroll-y="true">
+              <block wx:for="{{cities}}" wx:key="*this">
+                <view 
+                  class="city-item {{selectedCity === item ? 'active' : ''}}"
+                  bindtap="onCitySelect"
+                  data-city="{{item}}"
+                >
+                  <text>{{item}}</text>
+                </view>
+              </block>
+            </scroll-view>
+            
+            <!-- 右侧剧院列表 -->
+            <scroll-view class="venue-list" scroll-y="true">
+              <block wx:for="{{venues[selectedCity]}}" wx:key="*this">
+                <view 
+                  class="venue-item"
+                  bindtap="onVenueSelect"
+                  data-venue="{{item}}"
+                >
+                  <text>{{item}}</text>
+                </view>
+              </block>
+            </scroll-view>
+          </view>
+        </view>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">💰 Price</text>
+        <input 
+          class="form-input {{theme === 'dark' ? 'dark' : ''}}"
+          type="digit"
+          placeholder="0.00"
+          value="{{formData.price}}"
+          bindinput="onNumberInput"
+          bindfocus="onInputFocus"
+          bindblur="onInputBlur"
+          data-field="price"
+        />
+      </view>
+    </view>
+
+    <!-- 演职人员 -->
+    <view class="cast-section">
+      <text class="section-title">👥 Cast & Crew</text>
+      
+      <view class="cast-list">
+        <view wx:for="{{formData.cast}}" wx:key="index" class="cast-item">
+          <text class="cast-actor">{{item.actor}}</text>
+          <text wx:if="{{item.role}}" class="cast-role">{{item.role}}</text>
+          <view class="cast-delete" bindtap="onDeleteCast" data-index="{{index}}">
+            <text>✕</text>
+          </view>
+        </view>
+      </view>
+      
+      <view wx:if="{{formData.cast.length === 0}}" class="cast-empty">
+        <text>No cast added yet</text>
+      </view>
+      
+      <view class="cast-input-row">
+        <input 
+          class="cast-input actor-input"
+          type="text"
+          placeholder="Actor Name"
+          value="{{castInput.actor}}"
+          bindinput="onCastInputChange"
+          bindfocus="onInputFocus"
+          bindblur="onInputBlur"
+          data-field="actor"
+        />
+        <input 
+          class="cast-input role-input"
+          type="text"
+          placeholder="Role"
+          value="{{castInput.role}}"
+          bindinput="onCastInputChange"
+          bindfocus="onInputFocus"
+          bindblur="onInputBlur"
+          data-field="role"
+        />
+        <view class="cast-add-btn" bindtap="onAddCast">
+          <text>+</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 座位图上传 -->
+    <view class="seat-upload">
+      <text class="section-title">📸 座位图/票根</text>
+      
+      <label class="seat-upload-label">
+        <image 
+          wx:if="{{formData.seatImage}}"
+          class="seat-image" 
+          src="{{formData.seatImage}}" 
+          mode="aspectFill"
+          bindtap="onPreviewImage"
+          data-url="{{formData.seatImage}}"
+        />
+        <view wx:else class="seat-placeholder" bindtap="onUploadSeatImage">
+          <text class="placeholder-icon">📷</text>
+          <text class="placeholder-text">添加照片</text>
+        </view>
+      </label>
+      
+      <view wx:if="{{formData.seatImage}}" class="image-actions">
+        <view class="image-btn delete-btn" bindtap="onDeleteImage" data-field="seatImage">
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 备注 -->
+    <view class="notes-section">
+      <text class="section-title">📝 观演笔记</text>
+      <textarea 
+        class="notes-input {{theme === 'dark' ? 'dark' : ''}}"
+        placeholder="记录观演感受、演员表现、剧场环境等..."
+        value="{{formData.notes}}"
+        bindinput="onInputChange"
+        data-field="notes"
+      />
+    </view>
+    
+    <view class="form-spacer"></view>
+  </scroll-view>
+</view>

@@ -1,0 +1,5 @@
+{
+  "name": "StageLog",
+  "description": "A dedicated musical theater journal for tracking shows, visualizing monthly calendars with poster art, and generating AI-powered theater-going summaries. Features a vibrant Blue & Orange theme.",
+  "requestFramePermissions": []
+}

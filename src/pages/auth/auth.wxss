@@ -1,0 +1,177 @@
+/* 登录页面样式 */
+.auth-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48rpx;
+  transition: all 0.3s ease;
+}
+
+.auth-container.dark {
+  background-color: #000000;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 32rpx;
+  padding: 64rpx 48rpx;
+  width: 100%;
+  max-width: 640rpx;
+  box-shadow: 0 32rpx 128rpx 0 rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.auth-container.dark .auth-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Logo区域 */
+.logo-section {
+  text-align: center;
+  margin-bottom: 64rpx;
+}
+
+.logo-title {
+  display: block;
+  font-size: 64rpx;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16rpx;
+  letter-spacing: -2rpx;
+}
+
+.auth-container.dark .logo-title {
+  color: #ffffff;
+}
+
+.logo-subtitle {
+  display: block;
+  font-size: 24rpx;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 4rpx;
+  font-weight: 500;
+}
+
+/* 表单区域 */
+.form-section {
+  margin-bottom: 64rpx;
+}
+
+.input-group {
+  margin-bottom: 48rpx;
+}
+
+.input-label {
+  display: block;
+  font-size: 22rpx;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 1rpx;
+  margin-bottom: 16rpx;
+}
+
+.auth-input {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 32rpx;
+  background: #f9fafb;
+  border: 2rpx solid #e5e7eb;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #111827;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+}
+
+.auth-input:focus {
+  border-color: #f97316 !important;
+  background: white;
+  box-shadow: 0 0 0 4rpx rgba(249, 115, 22, 0.1);
+  outline: none;
+}
+
+.auth-input.dark {
+  background: #1f2937;
+  border-color: #374151;
+  color: #ffffff;
+}
+
+.auth-input.dark:focus {
+  background: #111827;
+  border-color: #f97316 !important;
+  box-shadow: 0 0 0 4rpx rgba(249, 115, 22, 0.2);
+}
+
+.auth-input::placeholder {
+  color: #d1d5db;
+  font-weight: 400;
+}
+
+.auth-input.dark::placeholder {
+  color: #6b7280;
+}
+
+/* 微信小程序特定的placeholder样式 */
+.auth-placeholder {
+  color: #d1d5db;
+  font-weight: 400;
+}
+
+.auth-container.dark .auth-placeholder {
+  color: #6b7280;
+}
+
+
+
+/* 登录按钮 */
+.auth-btn {
+  width: 100%;
+  background: #000000;
+  color: white;
+  border: none;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  box-shadow: 0 8rpx 24rpx 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.auth-container.dark .auth-btn {
+  background: #dc2626;
+}
+
+.auth-btn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* 切换模式 */
+.switch-section {
+  text-align: center;
+}
+
+.switch-text {
+  font-size: 24rpx;
+  color: #9ca3af;
+  transition: color 0.3s ease;
+}
+
+.auth-container.dark .switch-text {
+  color: #6b7280;
+}
+
+.switch-text:active {
+  color: #111827;
+}
+
+.auth-container.dark .switch-text:active {
+  color: #ffffff;
+}

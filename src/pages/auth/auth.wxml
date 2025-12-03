@@ -1,0 +1,38 @@
+<view class="auth-container {{theme === 'dark' ? 'dark' : ''}}">
+  <view class="auth-card">
+    <view class="logo-section">
+      <text class="logo-title">StageLog</text>
+      <text class="logo-subtitle">Digital Theater Journal</text>
+    </view>
+
+    <view class="form-section">
+      <view class="input-group">
+        <text class="input-label">用户名</text>
+        <input 
+          class="auth-input {{theme === 'dark' ? 'dark' : ''}}"
+          type="text"
+          placeholder="请输入您的用户名"
+          placeholder-class="auth-placeholder"
+          value="{{username}}"
+          bindinput="onUsernameInput"
+          confirm-type="done"
+          bindconfirm="onSubmit"
+          bindfocus="onInputFocus"
+          bindblur="onInputBlur"
+          maxlength="20"
+          auto-focus="{{false}}"
+        />
+      </view>
+
+      <button class="auth-btn" bindtap="onSubmit">
+        {{isLogin ? '进入' : '注册'}}
+      </button>
+    </view>
+
+    <view class="switch-section">
+      <text class="switch-text" bindtap="onSwitchMode">
+        {{isLogin ? '创建账户' : '已有账户？'}}
+      </text>
+    </view>
+  </view>
+</view>

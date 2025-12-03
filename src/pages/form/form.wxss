@@ -1,0 +1,617 @@
+.form-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.form-container.dark {
+  background-color: #1f2937;
+}
+
+/* 头部样式 */
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #e5e7eb;
+}
+
+.form-container.dark .form-header {
+  background-color: #374151;
+  border-bottom-color: #4b5563;
+}
+
+.header-btn {
+  padding: 16rpx;
+  border-radius: 8rpx;
+  background-color: #f3f4f6;
+}
+
+.form-container.dark .header-btn {
+  background-color: #4b5563;
+}
+
+.back-icon {
+  font-size: 32rpx;
+  color: #6b7280;
+}
+
+.header-title {
+  flex: 1;
+  text-align: center;
+}
+
+.title-text {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #111827;
+}
+
+.form-container.dark .title-text {
+  color: #f9fafb;
+}
+
+.subtitle-text {
+  font-size: 24rpx;
+  color: #6b7280;
+  margin-top: 4rpx;
+}
+
+.save-btn {
+  background-color: #ff6b6b !important;
+}
+
+.save-text {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+/* 表单内容 */
+.form-content {
+  height: calc(100vh - 120rpx);
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 票务链接解析 */
+.ticket-parser-section {
+  margin-bottom: 30rpx;
+  padding: 24rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.form-container.dark .ticket-parser-section {
+  background-color: #374151;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.3);
+}
+
+.parser-input-row {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.parser-input {
+  flex: 1;
+  padding: 20rpx 24rpx;
+  background-color: #f9fafb;
+  border: 1rpx solid #e5e7eb;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #111827;
+}
+
+.form-container.dark .parser-input {
+  background-color: #4b5563;
+  border-color: #6b7280;
+  color: #f9fafb;
+}
+
+.parse-btn {
+  padding: 20rpx 32rpx;
+  background-color: #3b82f6;
+  color: #ffffff;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+/* 海报上传 */
+.poster-upload {
+  margin-bottom: 30rpx;
+}
+
+.upload-label {
+  display: block;
+  width: 100%;
+  height: 300rpx;
+  border: 2rpx dashed #d1d5db;
+  border-radius: 16rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.form-container.dark .upload-label {
+  border-color: #4b5563;
+}
+
+.poster-image {
+  width: 100%;
+  height: 100%;
+}
+
+.poster-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f9fafb;
+}
+
+.form-container.dark .poster-placeholder {
+  background-color: #374151;
+}
+
+.placeholder-icon {
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
+  color: #9ca3af;
+}
+
+.placeholder-text {
+  font-size: 26rpx;
+  color: #6b7280;
+}
+
+.image-actions {
+  margin-top: 16rpx;
+  text-align: center;
+}
+
+.image-btn {
+  display: inline-block;
+  padding: 12rpx 24rpx;
+  background-color: #ef4444;
+  color: #ffffff;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+}
+
+/* 表单部分 */
+.form-section {
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.form-container.dark .form-section {
+  background-color: #374151;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.input-group {
+  margin-bottom: 20rpx;
+}
+
+.input-label {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8rpx;
+}
+
+.form-container.dark .input-label {
+  color: #d1d5db;
+}
+
+.form-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.half {
+  flex: 1;
+}
+
+.form-input {
+  width: 100%;
+  padding: 20rpx 24rpx;
+  background-color: #ffffff;
+  border: 1rpx solid #d1d5db;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #111827;
+}
+
+.form-input.dark {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.title-input {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+/* 选择器样式 */
+.selector-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 24rpx;
+  background-color: #ffffff;
+  border: 1rpx solid #d1d5db;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #111827;
+}
+
+.form-container.dark .selector-input {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+.selector-text.placeholder {
+  color: #9ca3af;
+}
+
+.selector-arrow {
+  color: #6b7280;
+  font-size: 24rpx;
+}
+
+/* 演职人员 */
+.cast-section {
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.form-container.dark .cast-section {
+  background-color: #374151;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 16rpx;
+}
+
+.form-container.dark .section-title {
+  color: #d1d5db;
+}
+
+.cast-list {
+  margin-bottom: 16rpx;
+}
+
+.cast-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 20rpx;
+  background-color: #f9fafb;
+  border-radius: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.form-container.dark .cast-item {
+  background-color: #374151;
+}
+
+.cast-actor {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #111827;
+}
+
+.form-container.dark .cast-actor {
+  color: #f9fafb;
+}
+
+.cast-role {
+  font-size: 24rpx;
+  color: #6b7280;
+  margin-left: 12rpx;
+}
+
+.cast-delete {
+  padding: 8rpx;
+  color: #ef4444;
+  font-size: 24rpx;
+}
+
+.cast-empty {
+  text-align: center;
+  padding: 32rpx;
+  color: #9ca3af;
+  font-size: 26rpx;
+}
+
+.cast-input-row {
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+}
+
+.cast-input {
+  flex: 1;
+  padding: 16rpx 20rpx;
+  background-color: #ffffff;
+  border: 1rpx solid #d1d5db;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  color: #111827;
+}
+
+.actor-input {
+  flex: 0.6;
+}
+
+.role-input {
+  flex: 0.4;
+}
+
+.cast-add-btn {
+  padding: 16rpx 20rpx;
+  background-color: #10b981;
+  color: #ffffff;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+}
+
+/* 座位图上传 */
+.seat-upload {
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.form-container.dark .seat-upload {
+  background-color: #374151;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.seat-upload-label {
+  display: block;
+  width: 100%;
+  height: 250rpx;
+  border: 2rpx dashed #d1d5db;
+  border-radius: 16rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.form-container.dark .seat-upload-label {
+  border-color: #4b5563;
+}
+
+.seat-image {
+  width: 100%;
+  height: 100%;
+}
+
+.seat-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f9fafb;
+}
+
+.form-container.dark .seat-placeholder {
+  background-color: #374151;
+}
+
+/* 备注 */
+.notes-section {
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.form-container.dark .notes-section {
+  background-color: #374151;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.notes-input {
+  width: 100%;
+  min-height: 180rpx;
+  padding: 20rpx 24rpx;
+  background-color: #ffffff;
+  border: 1rpx solid #d1d5db;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #111827;
+  line-height: 1.5;
+}
+
+.notes-input.dark {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+.notes-input::placeholder {
+  color: #9ca3af;
+}
+
+/* 间距 */
+.form-spacer {
+  height: 80rpx;
+}
+
+/* 剧院选择器 */
+.location-picker-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picker-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.picker-content {
+  position: relative;
+  background: white;
+  border-radius: 24rpx;
+  width: 90%;
+  max-width: 700rpx;
+  max-height: 80%;
+  overflow: hidden;
+  box-shadow: 0 32rpx 64rpx 0 rgba(0, 0, 0, 0.2);
+}
+
+.form-container.dark .picker-content {
+  background: #1f2937;
+}
+
+.picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx;
+  border-bottom: 1rpx solid #e5e7eb;
+}
+
+.form-container.dark .picker-header {
+  border-bottom-color: #374151;
+}
+
+.picker-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #111827;
+}
+
+.form-container.dark .picker-title {
+  color: #f9fafb;
+}
+
+.picker-close {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.form-container.dark .picker-close {
+  background: #374151;
+  color: #9ca3af;
+}
+
+/* 城市-剧院两级选择器 */
+.two-level-picker {
+  display: flex;
+  height: 500rpx;
+}
+
+.city-list {
+  width: 40%;
+  border-right: 1rpx solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.form-container.dark .city-list {
+  border-right-color: #374151;
+  background: #111827;
+}
+
+.city-item {
+  padding: 24rpx 32rpx;
+  font-size: 28rpx;
+  color: #6b7280;
+  border-bottom: 1rpx solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.form-container.dark .city-item {
+  color: #9ca3af;
+  border-bottom-color: #374151;
+}
+
+.city-item.active {
+  background: #f97316;
+  color: white;
+  font-weight: 600;
+}
+
+.city-item:last-child {
+  border-bottom: none;
+}
+
+.venue-list {
+  width: 60%;
+  background: white;
+}
+
+.form-container.dark .venue-list {
+  background: #1f2937;
+}
+
+.venue-item {
+  padding: 24rpx 32rpx;
+  border-bottom: 1rpx solid #f3f4f6;
+  font-size: 28rpx;
+  color: #111827;
+  transition: all 0.3s ease;
+}
+
+.form-container.dark .venue-item {
+  border-bottom-color: #374151;
+  color: #f9fafb;
+}
+
+.venue-item:active {
+  background: #f3f4f6;
+}
+
+.form-container.dark .venue-item:active {
+  background: #374151;
+}
+
+.venue-item:last-child {
+  border-bottom: none;
+}

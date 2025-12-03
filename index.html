@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>StageLog - Musical Theater Journal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                bg: '#09090b',
+                card: '#18181b',
+                primary: '#ef4444', // Red for dark mode
+                secondary: '#27272a'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      /* Safe area padding for iPhones with notches */
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      /* Custom scrollbar hiding */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .dark .glass {
+        background: rgba(24, 24, 27, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-gray-100 transition-colors duration-300">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

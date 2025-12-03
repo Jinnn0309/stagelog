@@ -1,0 +1,54 @@
+<view class="settings-container {{theme === 'dark' ? 'dark' : ''}}">
+  <!-- 用户信息卡片 -->
+  <view class="user-card glass">
+    <!-- 装饰背景 -->
+    <view class="user-card-bg"></view>
+    
+    <!-- 用户信息 -->
+    <view class="user-info">
+      <view class="user-avatar">
+        <text class="avatar-text">{{user.username.charAt(0).toUpperCase()}}</text>
+      </view>
+      
+      <view class="user-details">
+        <text class="username">{{user.username}}</text>
+        <text class="user-type">StageLog Member</text>
+      </view>
+    </view>
+
+    <!-- 徽章区域 -->
+    <view class="badges-section">
+      <view class="section-header">
+        <text class="section-icon">🏆</text>
+        <text class="section-title">Achievements</text>
+      </view>
+      
+      <view class="badges-grid">
+        <view 
+          wx:for="{{badges}}" 
+          wx:key="id"
+          class="badge-item {{item.earned ? 'earned' : 'locked'}}"
+        >
+          <view class="badge-icon">{{item.icon}}</view>
+          <text class="badge-name">{{item.name}}</text>
+          <text class="badge-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 设置选项 -->
+    <view class="settings-section">
+      <view class="setting-item" bindtap="onToggleTheme">
+        <text class="setting-label">Dark Mode</text>
+        <view class="setting-toggle">
+          <text class="toggle-icon">{{theme === 'light' ? '☀️' : '🌙'}}</text>
+        </view>
+      </view>
+      
+      <view class="setting-item logout-item" bindtap="onLogout">
+        <text class="setting-label">Log Out</text>
+        <text class="logout-icon">🚪</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,62 @@
+<view class="home-container {{theme === 'dark' ? 'dark' : ''}}">
+  <!-- 剧场风格横幅 -->
+  <view class="hero-banner">
+    <image class="banner-bg" src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?q=80&w=1920&auto=format&fit=crop" mode="aspectFill" />
+    
+    <!-- 渐变遮罩 -->
+    <view class="banner-overlay"></view>
+    
+    <!-- 内容 -->
+    <view class="banner-content">
+      <view class="banner-tag">
+        <text class="tag-text">THEATER LOG</text>
+      </view>
+      
+      <text class="banner-title">记录每一场 <text class="highlight">精彩演出</text></text>
+      
+      <view class="banner-divider">
+        <view class="divider-line"></view>
+        <text class="divider-text">心之所向，身之所往</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content-section">
+    <view class="content-card">
+      <!-- 标签切换 -->
+      <view class="tab-container">
+        <view class="tab-wrapper">
+          <view 
+            class="tab-item {{activeTab === 'towatch' ? 'active' : ''}}"
+            bindtap="onTabChange"
+            data-tab="towatch"
+          >
+            <text class="tab-icon">📋</text>
+            <text class="tab-text">待看清单</text>
+          </view>
+          
+          <view 
+            class="tab-item {{activeTab === 'watched' ? 'active' : ''}}"
+            bindtap="onTabChange"
+            data-tab="watched"
+          >
+            <text class="tab-icon">✅</text>
+            <text class="tab-text">已看存档</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 演出列表 -->
+      <show-list 
+        filter="{{activeTab}}"
+        showEmpty="{{true}}"
+        showActions="{{true}}"
+        bind:select="onRecordTap"
+        bind:edit="onEditRecord"
+        bind:delete="onDeleteRecord"
+        id="home-show-list"
+      />
+    </view>
+  </view>
+</view>

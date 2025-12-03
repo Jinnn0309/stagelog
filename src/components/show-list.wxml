@@ -1,0 +1,80 @@
+<view class="show-list-container {{theme === 'dark' ? 'dark' : ''}}">
+  <!-- 列表头部 -->
+  <view wx:if="{{showEmpty}}" class="list-header">
+    <text class="list-title">{{filter === 'watched' ? 'History' : filter === 'towatch' ? 'Upcoming' : 'All Shows'}}</text>
+    <view class="list-count">
+      <text class="count-text">{{filteredRecords.length}} SHOWS</text>
+    </view>
+  </view>
+
+  <!-- 演出列表 -->
+  <view class="show-list">
+    <block wx:for="{{filteredRecords}}" wx:key="id">
+      <view 
+        class="show-item {{theme === 'dark' ? 'dark' : ''}}"
+        bindtap="onRecordTap"
+        data-id="{{item.id}}"
+      >
+        <!-- 海报 -->
+        <view class="show-poster">
+          <image 
+            wx:if="{{item.posterImage}}"
+            class="poster-image" 
+            src="{{item.posterImage}}" 
+            mode="aspectFill"
+          />
+          <view wx:else class="poster-placeholder">
+            <text class="poster-icon">🎭</text>
+            <text class="poster-text">No Poster</text>
+          </view>
+        </view>
+        
+        <!-- 信息 -->
+        <view class="show-info">
+          <text class="show-title">{{item.title}}</text>
+          
+          <view class="show-details">
+            <view class="detail-item">
+              <text class="detail-icon">📅</text>
+              <text class="detail-text">{{item.date}} {{item.time}}</text>
+            </view>
+            
+            <view class="detail-item">
+              <text class="detail-icon">📍</text>
+              <text class="detail-text">{{item.location}}</text>
+            </view>
+          </view>
+
+          <view class="show-footer">
+            <text class="show-price">{{item.price > 0 ? '¥' + item.price : '--'}}</text>
+            
+            <view wx:if="{{showActions}}" class="action-buttons">
+              <view 
+                class="action-btn edit-btn"
+                catchtap="onEditRecord"
+                data-id="{{item.id}}"
+              >
+                ✏️
+              </view>
+              <view 
+                class="action-btn delete-btn"
+                catchtap="onDeleteRecord"
+                data-id="{{item.id}}"
+              >
+                🗑️
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 空状态 -->
+    <view wx:if="{{showEmpty && filteredRecords.length === 0}}" class="empty-state">
+      <view class="empty-icon">
+        <text class="empty-emoji">{{filter === 'towatch' ? '📅' : filter === 'watched' ? '🎬' : '🎭'}}</text>
+      </view>
+      <text class="empty-text">{{filter === 'towatch' ? 'No upcoming shows' : filter === 'watched' ? 'No history yet' : 'No shows yet'}}</text>
+    </view>
+  </view>
+</view>
