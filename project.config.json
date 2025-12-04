@@ -1,6 +1,6 @@
 {
   "appid": "你的小程序AppID",
-  "cloudfunctionRoot": "src/cloudfunctions/",
+  "cloudfunctionRoot": "cloudfunctions/",
   "miniprogramRoot": "src/",
   "setting": {
     "urlCheck": true,
@@ -37,9 +37,15 @@
     "minifyWXSS": true,
     "showES6CompileOption": false,
     "minifyWXML": true,
-    "bundle": false
+    "bundle": false,
+    "ignoreUploadUnusedFiles": true,
+    "ignoreDevUnusedFiles": false
   },
   "compileType": "miniprogram",
   "libVersion": "3.12.0",
-  "condition": {}
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
 }
